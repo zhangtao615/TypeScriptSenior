@@ -1,0 +1,24 @@
+{
+  "name": "TypeScriptSenior",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "ts-node ./src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangtao615/TypeScriptSenior.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangtao615/TypeScriptSenior/issues"
+  },
+  "homepage": "https://github.com/zhangtao615/TypeScriptSenior#readme",
+  "devDependencies": {
+    "ts-node": "^9.0.0",
+    "typescript": "^4.1.2"
+  }
+}
