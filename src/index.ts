@@ -1,30 +1,22 @@
-const userInfo: any = undefined;
-// 通过装饰器来进行异常捕获
-function catchError (params: string) {
- return function (target: any, key: string, descriptor: PropertyDescriptor) {
-    const fn = descriptor.value;
-    descriptor.value = function () {
-      try {
-        fn();
-      } catch(e) {
-        console.log(`useInfo.${params} 存在问题`)
-      }
-    }
+// reflect-metadata
+import 'reflect-metadata';
+
+function showData (target: typeof User) {
+  for(let key in target.prototype) {
+    const data = Reflect.getMetadata('data', target.prototype, key);
+    console.log(data)
   }
 }
 
-
-class Test {
-  @catchError('name')
-  getName () {
-    return userInfo.name;
-  }
-  @catchError('age')
-  getAge () {
-    return userInfo.age;
+function setData(dataKey: string, msg: string) {
+  return function(target: User, key: string) {
+    Reflect.defineMetadata(dataKey, msg, target, key)
   }
 }
-
-const test = new Test();
-test.getAge();
-test.getName();
+@showData
+class User {
+  @setData('data', 'name')
+  getName () {};
+  @setData('data', 'age')
+  getAge(){}
+}
